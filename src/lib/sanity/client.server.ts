@@ -1,16 +1,19 @@
 import client from '@sanity/client';
 
 import {
-	SANITY_PROJECT_ID,
-	SANITY_DATASET,
+	PUBLIC_SANITY_PROJECT_ID,
+	PUBLIC_SANITY_DATASET,
+} from '$env/static/public'
+
+import {
 	PREVIEW_TOKEN,
 	SANITY_TOKEN
 } from '$env/static/private';
 
 const config = {
 	apiVersion: '2021-08-31',
-	projectId: SANITY_PROJECT_ID,
-	dataset: SANITY_DATASET,
+	projectId: PUBLIC_SANITY_PROJECT_ID,
+	dataset: PUBLIC_SANITY_DATASET,
 	useCdn: false // `false` if you want to ensure fresh data
 };
 

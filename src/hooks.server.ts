@@ -1,6 +1,5 @@
 import type { Handle } from '@sveltejs/kit';
-import { previewClient, sanityClient } from '$lib/server/sanity/sanityClient';
-import { validatePreviewToken } from '$lib/server/sanity/sanityClient';
+import { previewClient, sanityClient, validatePreviewToken } from '$lib/sanity/client.server';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const isPreviewMode = validatePreviewToken(event.url);

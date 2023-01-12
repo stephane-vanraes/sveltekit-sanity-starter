@@ -5,8 +5,8 @@
 Create a .env file (or equivalent for production) with
 
 ```
-SANITY_PROJECT_ID=<your projectid>
-SANITY_DATASET=<your dataset>
+PUBLIC_SANITY_PROJECT_ID=<your projectid>
+PUBLIC_SANITY_DATASET=<your dataset>
 SANITY_TOKEN=<your token>
 PREVIEW_TOKEN=<a random preview token>
 ```
@@ -17,9 +17,17 @@ You can get a preview of unpublished content using the preview token (just add `
 
 ## Using the Sanity Client
 
-`lib/server/sanity/sanityClient.ts` creates two clients: one with the `SANITY TOKEN` and one without, the first gives you an authorized connection that can be used for previewing, the other one is a general public one. In `hooks.server.ts` the app will check if a valid preview token is provided and populate `event.locals` accordingly with either the authorized or the normal connection.
+`lib/sanity/client.server.ts` creates two clients: one with the `SANITY TOKEN` and one without, the first gives you an authorized connection that can be used for previewing, the other one is a general public one. In `hooks.server.ts` the app will check if a valid preview token is provided and populate `event.locals` accordingly with either the authorized or the normal connection.
 
 In _any_ server side script related to pages/endpoints (`+server.ts`, `+layout.server.ts` and `+page.server.ts`) you can grab this client from the locals and use it to request the desired data from Sanity.
+
+## Images
+
+`lib/sanity/imageUrl` provides a helper function to handle images from Sanity, it effectively is a wrapper around [@sanity/image-url](https://www.sanity.io/docs/image-url). The most basic use would be:
+
+```html
+<img src="{imageUrl(source).url()}" alt="" />
+```
 
 ## Styling
 
