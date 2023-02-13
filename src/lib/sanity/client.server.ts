@@ -20,4 +20,4 @@ const config = {
 export const sanityClient = client(config);
 export const previewClient = client({ ...config, token: SANITY_TOKEN });
 export const validatePreviewToken = (url: URL) =>
-	url.searchParams.get('preview-token') === PREVIEW_TOKEN;
+	url.searchParams.get('preview_token') === PREVIEW_TOKEN;
