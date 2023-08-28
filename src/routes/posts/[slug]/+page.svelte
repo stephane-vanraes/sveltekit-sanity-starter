@@ -32,8 +32,6 @@
 	</div>
 </article>
 
-<pre>{JSON.stringify(post.body, null, 2)}</pre>
-
 <style>
 	article {
 		align-items: flex-start;
