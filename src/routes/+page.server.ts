@@ -1,14 +1,16 @@
-export async function load({ locals }) {
+import type { PageServerLoad } from './$types';
+
+export const load = (async ({ locals }) => {
 	const posts: App.Post[] = await locals.client.fetch(`
-    *[_type == "post"] {
+    *[_type == "post" ] {
         _id,  
         title,
-        "slug": slug.current,
+        slug,
         publishedAt,
-      } | order(select(defined(publishedAt) => 1,  0) asc, publishedAt desc)
+      } | order(publishedAt desc) [0...10]
     `);
 
 	return {
 		posts
 	};
-}
+}) satisfies PageServerLoad;

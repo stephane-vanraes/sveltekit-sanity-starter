@@ -1,8 +1,7 @@
 import { createClient } from '@sanity/client';
 
-import { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } from '$env/static/public';
-
 import { PREVIEW_TOKEN, SANITY_TOKEN } from '$env/static/private';
+import { PUBLIC_SANITY_DATASET, PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 const config = {
 	apiVersion: '2021-08-31',

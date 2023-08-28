@@ -2,6 +2,9 @@
 	--primary--100: hsl(216, 87%, 46%);
 	--primary--200: hsl(216, 87%, 66%);
 	--primary--300: hsl(216, 87%, 86%);
+	--secondary--100: hsl(96, 87%, 46%);
+	--secondary--200: hsl(96, 87%, 66%);
+	--secondary--300: hsl(96, 87%, 86%);
 	--warning: hsl(5, 87%, 56%);
 	--container: 72ch;
 	--container-large: 96ch;
@@ -30,5 +33,14 @@ html {
 body {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+	min-block-size: 100vh;
+}
+
+img {
+	display: block;
+}
+
+h1 {
+	font-size: 2rem;
+	font-weight: 600;
 }

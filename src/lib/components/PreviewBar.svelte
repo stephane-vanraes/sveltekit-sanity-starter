@@ -1,6 +1,24 @@
+<script lang="ts">
+	import { beforeNavigate } from '$app/navigation';
+	import { page } from '$app/stores';
+
+	const preview_token = $page.url.searchParams.get('preview_token') as string;
+	beforeNavigate(({ to, cancel }) => {
+		if (to) {
+			if (to.url.searchParams.has('preview_reload')) {
+				cancel();
+				$page.url.searchParams.delete('preview_token');
+				document.location.search = $page.url.search;
+			} else {
+				to.url.searchParams.append('preview_token', preview_token);
+			}
+		}
+	});
+</script>
+
 <div>
 	<span>#Previewmode-active</span>
-	<a href="/" on:click|preventDefault={() => window.location.reload()}>Reload</a>
+	<a href="?preview_reload=true">Reload</a>
 </div>
 
 <style>

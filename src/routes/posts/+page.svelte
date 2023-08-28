@@ -5,9 +5,16 @@
 	export let data: PageData;
 </script>
 
-<h1>Recent Posts</h1>
+<h1>All the posts</h1>
+
 <div>
-	<Pagination data={data.posts} let:row={post}>
+	<span class="page-count">{data.pageCount} {data.pageCount == 1 ? 'Page' : 'Pages'}</span>
+	<Pagination
+		data={data.posts}
+		pageCount={data.pageCount}
+		pageIndex={data.pageIndex}
+		let:row={post}
+	>
 		<a href="/posts/{post.slug.current}">
 			<span>{post.title}</span>
 			<time>{dateConverter(post.publishedAt)}</time>
@@ -18,6 +25,11 @@
 <style>
 	div {
 		margin: 1rem auto;
+	}
+	.page-count {
+		display: block;
+		font-weight: 600;
+		margin-block: 0.25rem;
 	}
 	a {
 		align-items: flex-end;

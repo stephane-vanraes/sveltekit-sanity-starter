@@ -1,5 +1,5 @@
 <footer>
-	<span>&copy; 2022 Stephane Vanraes</span>
+	<span>&copy; 2023 Stephane Vanraes</span>
 </footer>
 
 <style>
@@ -11,8 +11,8 @@
 		display: flex;
 		justify-content: space-between;
 		margin: auto;
-		max-width: var(--container-large);
+		max-inline-size: var(--container-large);
 		padding: 0.5rem;
-		width: 100%;
+		inline-size: 100%;
 	}
 </style>

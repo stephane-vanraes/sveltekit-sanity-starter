@@ -1,0 +1,23 @@
+import type { PageServerLoad } from './$types';
+
+export const load = (async ({ locals, url }) => {
+	const pageIndex = (url.searchParams.get('pageIndex') ?? 0) as number;
+	const pageSize = 10;
+	const [posts, itemCount] = (await Promise.all([
+		locals.client.fetch(`
+      *[_type == "post"] {
+        _id,  
+        title,
+        slug,
+        publishedAt,
+      } | order(publishedAt desc)[${pageIndex}...${pageIndex + pageSize}]
+      `),
+		locals.client.fetch(`count(*[_type == "post"])`)
+	])) as [App.Post[], number];
+
+	return {
+		pageCount: Math.ceil(itemCount / pageSize),
+		pageIndex,
+		posts
+	};
+}) satisfies PageServerLoad;
