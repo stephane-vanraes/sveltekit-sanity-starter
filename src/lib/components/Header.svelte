@@ -5,9 +5,9 @@
 <header>
 	<a class="logo" href="/">
 		<img src="/sanity.svg" alt="" />
-		#Title
+		Demo
 	</a>
-	<span>#Page title</span>
+	<span>SvelteKit Sanity Demo</span>
 	<nav>
 		<ul>
 			<li><a href="/" aria-current={$page.route.id == '/' ? 'page' : 'false'}>Home</a></li>
