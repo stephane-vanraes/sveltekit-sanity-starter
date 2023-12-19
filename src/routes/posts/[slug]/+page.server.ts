@@ -1,8 +1,7 @@
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ locals, params, url }) => {
-	const post: App.Post = (
-		await locals.client.fetch(`
+	const posts: App.Post[] = await locals.client.fetch(`
   *[_type == "post" && slug.current == "${params.slug}"] {
       _id,
       author->{
@@ -17,8 +16,9 @@ export const load = (async ({ locals, params, url }) => {
       mainImage,
       
     }
-  `)
-	)[0];
+  `);
+
+	const post = locals.isPreviewMode ? posts[posts.length - 1] : posts[0];
 	locals.crumbs[2] = { href: url.href, title: post.title };
 	return {
 		post
