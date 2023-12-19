@@ -20,6 +20,7 @@ declare namespace App {
 	}
 
 	interface Post {
+		_id: string;
 		author: Author;
 		body: import('@portabletext/svelte').InputValue;
 		mainImage: import('@sanity/client').SanityAssetDocument;
